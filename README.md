@@ -28,3 +28,6 @@ Check out the live link [here]( agecalculator-pi.vercel.app ).
 
 ## Screenshot
 
+![Age Calculator ]("before.png")
+![Age Calculator ](after.png)
+
