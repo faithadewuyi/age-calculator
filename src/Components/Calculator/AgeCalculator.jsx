@@ -74,7 +74,7 @@ const AgeCalculator = () => {
 
   return (
     <div className='container'>
-      <h1>Age Calculator 📅</h1>
+      <h1>Age Calculator 📆</h1>
       <div className="input">
         <label htmlFor="day">Day:</label>
         <input
