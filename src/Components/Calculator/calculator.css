@@ -64,5 +64,52 @@
     margin-top: 1.25em;
     font-size: 2.125rem;
     font-weight: bold;
-    font-family: 'Italianno', cursive;
+    font-family: 'Italianno', cursive;;
+    
   }
+
+  .health-tips {
+    margin-top: 1.2em;
+    font-size: 1rem;
+    line-height: 2;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+    color: black;
+  }
+  
+  .reference {
+    margin-top: 20px;
+    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+
+  }
+  .health-tips span{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1.5em;
+    display: block;
+    text-align: center;
+  }
+ 
+  
+  .reference a {
+    color: #007bff;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+  }
+
+  footer{
+    text-align: center;
+    margin-top: 2.5em;
+    
+    background-color: #1a1f24;
+    height: 50px;
+    width: 100%;
+}
+
+.footer p{
+  color: whitesmoke;
+  font-family: 'Roboto', sans-serif;
+  font-size:1.2rem;
+  padding: 1em;
+}
