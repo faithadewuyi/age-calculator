@@ -1,5 +1,5 @@
 
-import AgeCalculator from './Components/AgeCalculator'
+import AgeCalculator from './Components/Calculator/AgeCalculator'
 
 const App = () => {
   return (

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../Calculator/calculator.css';
 
 const AgeCalculator = () => {
   // Variables to store input values for day, month, and year
@@ -6,48 +7,58 @@ const AgeCalculator = () => {
   const [month, setMonth] = useState("");
   const [year, setYear] = useState("");
 
-  // Variable to store the calculated age
+  // Variable to store the calculated age and error message
   const [age, setAge] = useState(null);
+  const [error, setError] = useState("");
 
   const calculateAge = () => {
-    if (day && month && year) {
-      // Create a Date Object for the birth date
-      const birthday = new Date(`${year}-${month}-${day}`);
-      const currentDate = new Date();
-
-      const agedifference = currentDate - birthday;
-
-      const years = Math.floor(agedifference / (1000 * 60 * 60 * 24 * 365.25));
-      const months = Math.floor((agedifference % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
-      const days = Math.floor((agedifference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((agedifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((agedifference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((agedifference % (1000 * 60)) / 1000);
-
-      setAge({ years, months, days, hours, minutes, seconds });
+    if (!day || !month || !year) {
+      setError("Please fill in all fields!");
+      setAge(null);
+      return;
     }
+
+    setError("");
+
+    // Create a Date Object for the birth date
+    const birthday = new Date(`${year}-${month}-${day}`);
+    const currentDate = new Date();
+
+    const agedifference = currentDate - birthday;
+
+    const years = Math.floor(agedifference / (1000 * 60 * 60 * 24 * 365.25));
+    const months = Math.floor((agedifference % (1000 * 60 * 60 * 24 * 365.25)) / (1000 * 60 * 60 * 24 * 30.44));
+    const days = Math.floor((agedifference % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((agedifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((agedifference % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((agedifference % (1000 * 60)) / 1000);
+
+    setAge({ years, months, days, hours, minutes, seconds });
   };
 
   // Functions to update state when input field is filled
   const handleDayChange = (event) => {
     setDay(event.target.value);
     setAge(null);
+    setError("");
   };
 
   const handleMonthChange = (event) => {
     setMonth(event.target.value);
     setAge(null);
+    setError("");
   };
 
   const handleYearChange = (event) => {
     setYear(event.target.value);
     setAge(null);
+    setError("");
   };
 
   return (
-    <div>
+    <div className='container'>
       <h1>Age Calculator</h1>
-      <div>
+      <div className="input">
         <label htmlFor="day">Day:</label>
         <input
           type="number"
@@ -61,7 +72,7 @@ const AgeCalculator = () => {
           required
         />
       </div>
-      <div>
+      <div className="input">
         <label htmlFor="month">Month:</label>
         <input
           type="number"
@@ -75,7 +86,7 @@ const AgeCalculator = () => {
           required
         />
       </div>
-      <div>
+      <div className="input">
         <label htmlFor="year">Year:</label>
         <input
           type="number"
@@ -87,13 +98,14 @@ const AgeCalculator = () => {
           required
         />
       </div>
-      <button onClick={calculateAge} type="submit">
+      <button onClick={calculateAge} type="button" className='calculate-button'>
         Calculate Age
       </button>
-      <div>
+      {error && <p className="error-message">{error}</p>}
+      <div className="">
         {age && (
-          <div>
-            <p>
+          <div >
+            <p className="age-result">
               Your age is: {age.years} years, {age.months} months, {age.days} days, {age.hours} hours, {age.minutes} minutes, {age.seconds} seconds
             </p>
           </div>
